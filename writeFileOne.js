@@ -1,7 +1,7 @@
 import { existsSync, writeFileSync, readFileSync } from "fs";
 
 const FILENAME = "./place2b/lets-see.json";
-
+const createForTest = "jajaja";
 function randomNumber() {
     return Math.random() * 10;
 }
