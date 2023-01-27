@@ -1,6 +1,29 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+    workflow_dispatch:
+        inputs:
+            reportSeverity:
+                type: choice
+                required: true
+                default: no-report
+                description: Select reporting severity
+                options:
+                    - no-report
+                    - info
+                    - warn
+                    - error
+                    - fatal
+            nameFilter:
+                default: ".*"
+                description: Optional filter on test name
+            pathFilter:
+                default: ".*"
+                description: Optional filter on test path
+            somqueryBaseUrl:
+                default: "https://somquery.sqrt-5041.de"
+                description: "Somquery base url"
+
 jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
@@ -13,7 +36,8 @@ jobs:
             - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
             - run: mkdir -p path/to/artifact
             - run: echo hello > path/to/artifact/world.txt
-            - uses: actions/upload-artifact@v3
+            - name: uploads artifact
+              uses: actions/upload-artifact@v3
               with:
                   name: test-details.json
                   path: place2b/combined.json
