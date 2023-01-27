@@ -37,7 +37,7 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: "16"
-              run: node app.js
+            - run: node app.js
             - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
             - run: mkdir -p path/to/artifact
             - run: echo hello > path/to/artifact/world.txt
