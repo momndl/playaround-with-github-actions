@@ -1,6 +1,16 @@
 name: "Upload a Build Artifact"
 description: "Upload a build artifact that can be used by subsequent workflow steps"
 author: "GitHub"
+
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        # The branches below must be a subset of the branches above
+        branches: ["main"]
+    schedule:
+        - cron: "18 10 * * 3"
+
 inputs:
     name:
         description: "Artifact name"
