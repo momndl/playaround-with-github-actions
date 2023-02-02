@@ -4,12 +4,12 @@ on:
     workflow_dispatch:
         inputs:
             debug:
-        type: choice
-        default: no
-        description: Optional debugInfo in console after testrun
-        options:
-            - yes
-            - no
+                type: choice
+                default: no
+                description: Optional debugInfo in console after testrun
+                options:
+                    - yes
+                    - no
 
 jobs:
     Explore-GitHub-Actions:
