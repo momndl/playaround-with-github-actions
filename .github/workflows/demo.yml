@@ -3,33 +3,20 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
     workflow_dispatch:
         inputs:
-            reportSeverity:
-                type: choice
-                required: true
-                default: no-report
-                description: Select reporting severity
-                options:
-                    - no-report
-                    - info
-                    - warn
-                    - error
-                    - fatal
-            nameFilter:
-                default: ".*"
-                description: Optional filter on test name
-            pathFilter:
-                default: ".*"
-                description: Optional filter on test path
-            somqueryBaseUrl:
-                default: "https://somquery.sqrt-5041.de"
-                description: "Somquery base url"
+            debug:
+        type: choice
+        default: no
+        description: Optional debugInfo in console after testrun
+        options:
+            - yes
+            - no
 
 jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
         steps:
             - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-            - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+            - run: echo "🐧 This job is blabla  ${{ github.event.inputs.debug }}    tHub!"
             - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
             - name: Check out repository code
               uses: actions/checkout@v3
